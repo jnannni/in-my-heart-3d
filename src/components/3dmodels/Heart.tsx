@@ -14,40 +14,23 @@ import {useSpring, animated, easings} from '@react-spring/three'
 
 const Heart =({index = 0, ...props}) => {
   const group = useRef<THREE.Group>(null)
-  const { nodes, materials, animations } = useGLTF('/models/crystal_heart.glb')
-  const [isPulsing, setIsPulsing] = useState(false);
-  const [isMoving, setIsMoving] = useState(false);
+  const { nodes, materials, animations } = useGLTF('/models/crystal_heart.glb')  
 
   const { heartScale } = useSpring({
       from: { heartScale: 1 },
       to: {heartScale: 1.1},      
       config: { duration: 800 },
       loop: {reverse: true},
-      reset: true,
+      // reset: true,
       easing: easings.easeInOutQuad,      
-    }); 
-    
-  const {heartPosition} = useSpring({
-    from: { heartPosition: [0, -2.3, 4] },
-    to: {heartPosition: [0, -1.5, -5.5]},
-    config: { duration: 5000 },
-    reset: false
-  })
-
-  useEffect(() => {
-    if (index === 3) {      
-      heartScale.start();
-    }    
-  }, [index, heartPosition])
+    });
     
   useFrame(() =>{
     if (group.current) {
-        group.current.rotation.y += 0.01; 
-        if (index === 3) {
-          group.current.position.set(heartPosition.get()[0], heartPosition.get()[1], heartPosition.get()[2]);          
-        }       
+        group.current.rotation.y += 0.01;               
     }   
   });
+
   return (
     <group ref={group} {...props} dispose={null}>
       <animated.group scale={heartScale}>

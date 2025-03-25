@@ -1959,7 +1959,7 @@ promise-worker-transferable@^1.0.4:
     is-promise "^2.1.0"
     lie "^3.0.2"
 
-prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -1998,6 +1998,11 @@ react-dropzone@^12.0.0:
     attr-accept "^2.2.2"
     file-selector "^0.5.0"
     prop-types "^15.8.1"
+
+react-icons@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.5.0.tgz#8aa25d3543ff84231685d3331164c00299cdfaf2"
+  integrity sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==
 
 react-is@^16.13.1:
   version "16.13.1"
@@ -2209,7 +2214,28 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-troika-three-text@^0.52.0:
+troika-3d@^0.52.0:
+  version "0.52.0"
+  resolved "https://registry.yarnpkg.com/troika-3d/-/troika-3d-0.52.0.tgz#ff68d830dcafe86ada939a01607aa9065806379d"
+  integrity sha512-+fgO3DHz+QXIJbBdMIOwqYQ+iYuWCoCoGgcCcRGPjiCuDU3OnTNOthz5OeKTeu4974zePFw7y47zUuHBCWyYWQ==
+  dependencies:
+    troika-core "^0.52.0"
+    troika-three-utils "^0.52.0"
+
+troika-animation@^0.52.0:
+  version "0.52.0"
+  resolved "https://registry.yarnpkg.com/troika-animation/-/troika-animation-0.52.0.tgz#13300224d3faa206ec83ffb5faf03a2ced856c23"
+  integrity sha512-FmNMnOjoLvTtESQbRxYUBlUxaqXDEwCkVOUgZaJRBETjwh9nq5517LPyQcWlW9fpZcjEVVOYl4KUcNWqTDAHgA==
+
+troika-core@^0.52.0:
+  version "0.52.0"
+  resolved "https://registry.yarnpkg.com/troika-core/-/troika-core-0.52.0.tgz#5f81a79c2b8a36ad04994e8cfcc750145fb2810e"
+  integrity sha512-M/gHgVSheW6JS4rJML4mDwEo6ebubcK1vjJ+p8a+1yqqFozBcRCDrFCM3MCGSMS5haDyInpizk/dIiaSN2ab5g==
+  dependencies:
+    prop-types "^15.6.2"
+    troika-animation "^0.52.0"
+
+troika-three-text@^0.52.0, troika-three-text@^0.52.3:
   version "0.52.3"
   resolved "https://registry.yarnpkg.com/troika-three-text/-/troika-three-text-0.52.3.tgz#38fe68a9642aba562830323dee6708710cf36a61"
   integrity sha512-jLhiwgV8kEkwWjvK12f2fHVpbOC75p7SgPQ0cgcz+IMtN5Bdyg4EuFdwuTOVu9ga8UeYdKBpzd1AxviyixtYTQ==
