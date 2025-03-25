@@ -1,7 +1,7 @@
 import { useThree } from '@react-three/fiber'
 import React, {useEffect, useState, useRef } from 'react'
 import GlassWall from './3dmodels/GlassWall'
-import { Environment, CameraControls } from '@react-three/drei'
+import { Environment, CameraControls, Html, Text3D } from '@react-three/drei'
 import './style.css'
 import WallShattered from './3dmodels/WallShattered'
 import { Physics } from '@react-three/rapier'
@@ -49,6 +49,22 @@ const MainScene = () => {
     <>                
         <Physics>             
           <Heart scale={1.5} position={[0, -1, 4]} index={index} name={'heart'}/>
+          <Text3D
+          font='./fonts/Inter_Bold.json'
+          position={[5, 1.5, 5]} 
+          rotation={[-0.2, Math.PI, 0]}
+          scale={0.5}
+          curveSegments={32}
+          bevelEnabled
+          bevelSize={0.04}
+          bevelThickness={0.1}
+          height={0.5}
+          lineHeight={0.5}
+          letterSpacing={-0.02}
+          >
+            find out what is 'on my heart'❤️
+            <meshStandardMaterial color={'#ff3300'} />
+          </Text3D>
           <ambientLight intensity={0.5} />
           <Environment preset="dawn" background blur={0.5} />
           {index === 0 && <GlassWall scale={1.5} onClick={() => setIndex(1)}/>}

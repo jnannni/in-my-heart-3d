@@ -1,12 +1,13 @@
 import { Text3D, Edges, AccumulativeShadows, RandomizedLight, Html, Text, Billboard } from "@react-three/drei"
 import Earth from "../3dmodels/Earth";
-import { events } from "@react-three/fiber";
+import { usePortalTransition } from "../contexts/portalTransitionContext";
 
-const AboutMeCard = ({active='', info = [{event: '', location: '', date: '', info: ''}], portalRef}) => {
-    const blendValue = active ? 7 : 1.5;
+const AboutMeCard = ({info = [{event: '', location: '', date: '', info: ''}], portalRef}) => {
+    const {currentPortal} = usePortalTransition();
+    const blendValue = currentPortal ? 7 : 1.5;
     const annotationStyle = {
         transition: 'all 1s',
-        opacity: active === 'aboutMe' ? 1 : 0,        
+        opacity: currentPortal === 'aboutMe' ? 1 : 0,        
     }
     
   return (
@@ -21,16 +22,16 @@ const AboutMeCard = ({active='', info = [{event: '', location: '', date: '', inf
             <Edges linewidth={1} threshold={15} color={"black"} />
         </Text3D>        
         <Earth position={[0, 0, -7]} rotation={[0, 1.3 * Math.PI, 0]} scale={0.8} info={info}/>
-        <Text fillOpacity={active ? 1 : 0} color={'black'} fontSize={0.2} position={[1.4, 0.8, -6.4]} lineHeight={1} fontWeight={600} font="./fonts/Silkscreen-Regular.ttf">
+        <Text fillOpacity={currentPortal ? 1 : 0} color={'black'} fontSize={0.2} position={[1.4, 0.8, -6.4]} lineHeight={1} fontWeight={600} font="./fonts/Silkscreen-Regular.ttf">
             {`${info[0].event}\n${info[0].location}\n${info[0].date}\n`}
         </Text> 
-        <Text fillOpacity={active ? 1 : 0} color={'black'} fontSize={0.2} position={[-1.1, 1.3, -6.4]} lineHeight={1} fontWeight={600} font="./fonts/Silkscreen-Regular.ttf">
+        <Text fillOpacity={currentPortal ? 1 : 0} color={'black'} fontSize={0.2} position={[-1.1, 1.3, -6.4]} lineHeight={1} fontWeight={600} font="./fonts/Silkscreen-Regular.ttf">
             {`${info[1].event}\n${info[1].location}\n${info[1].date}\n${info[1].info}`}
         </Text> 
-        <Text fillOpacity={active ? 1 : 0} color={'black'} fontSize={0.2} position={[-2.2, -0.1, -6.4]} lineHeight={1} fontWeight={600} font="./fonts/Silkscreen-Regular.ttf" textAlign="right">
+        <Text fillOpacity={currentPortal ? 1 : 0} color={'black'} fontSize={0.2} position={[-2.2, -0.1, -6.4]} lineHeight={1} fontWeight={600} font="./fonts/Silkscreen-Regular.ttf" textAlign="right">
             {`${info[2].event}\n${info[2].location}\n${info[2].date}\n${info[2].info}`}
         </Text> 
-        <Text fillOpacity={active ? 1 : 0} color={'black'} fontSize={0.2} position={[-2.5, -1.0, -6.4]} lineHeight={1} fontWeight={600} font="./fonts/Silkscreen-Regular.ttf" textAlign="right">
+        <Text fillOpacity={currentPortal ? 1 : 0} color={'black'} fontSize={0.2} position={[-2.5, -1.0, -6.4]} lineHeight={1} fontWeight={600} font="./fonts/Silkscreen-Regular.ttf" textAlign="right">
             {`${info[3].event}\n${info[3].location}\n${info[3].date}`}
         </Text>                                     
         <AccumulativeShadows temporal frames={50} color='#f5fefd' colorBlend={blendValue} toneMapped={true} alphaTest={0.7} opacity={0.5} scale={20} position={[0, -1.6, -9.4]}>

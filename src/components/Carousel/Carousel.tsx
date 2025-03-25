@@ -3,6 +3,7 @@ import Portal from "../PortalsScene/Portal"
 import { useEffect, useState, useRef } from "react"
 import * as THREE from 'three'
 import { useFrame, useThree } from "@react-three/fiber"
+import { usePortalTransition } from "../contexts/portalTransitionContext"
 
 const tech = [
     {name: 'React', level: '85'},
@@ -54,20 +55,20 @@ const skillSet = {
 const Carousel = ({skillsName = '', skills = [{name: 'React', level: '60'}, {name: 'React', level: '80'}]}) => {
   const skillSetLength = Object.keys(skillSet).length;
   const radius = 4;
-  const [active, setActive] = useState('');
+  const {currentPortal, setCurrentPortal} = usePortalTransition();
   const { scene } = useThree();
   const controlsRef = useRef<CameraControls>(null);
   const groupRef = useRef<THREE.Group>(null);
   const [prevCameraPos, setPrevCameraPos] = useState(new THREE.Vector3(0,0,-15));
 
   useEffect(() => {            
-    if (active !== '') {                             
+    if (currentPortal !== '') {                             
       const targetPosition = new THREE.Vector3(); 
       const cameraPosition = new THREE.Vector3();
       controlsRef.current?.getPosition(cameraPosition); 
       setPrevCameraPos(cameraPosition);
 
-      const portal = scene.getObjectByName(active);
+      const portal = scene.getObjectByName(currentPortal);
       if (portal) {
         portal.getWorldPosition(targetPosition);
         const portalDirection = targetPosition.clone().normalize().multiplyScalar(0.1);
@@ -75,14 +76,14 @@ const Carousel = ({skillsName = '', skills = [{name: 'React', level: '60'}, {nam
         controlsRef.current?.setLookAt(newCameraPosition.x, newCameraPosition.y, newCameraPosition.z, 0, 0, 0, true);
       }      
     } else controlsRef.current?.setLookAt(prevCameraPos.x, 0, prevCameraPos.z, 0, 0, 0, true);
-  }, [active]);
+  }, [currentPortal]);
   
 
   return (
     <>
     {Object.entries(skillSet).map(([key, value], i) => {
       return (
-        <Portal key={key} skillSetName={key} skills={value} active={active} setActive={setActive}
+        <Portal key={key} skillSetName={key} skills={value}
         position={[Math.sin((i / skillSetLength) * Math.PI * 2) * radius, 0, Math.cos((i / skillSetLength) * Math.PI * 2) * radius]}         
         rotation={[0, (i / skillSetLength) * Math.PI * 2, 0]}
         />

@@ -29,13 +29,13 @@ const ProjectsCard = ({active='', info = [{name: '', description: '', skills: ''
         <Edges linewidth={1} threshold={15} color={"black"} />
       </Text3D>
       <group>
-        <Project active={active} info={info[0]} txtposition={[2, 1.1, -7]} tipposition={[1.5, -0.5, -6.9]}>
+        <Project info={info[0]} txtposition={[2, 1.1, -7]} tipposition={[1.5, -0.5, -6.9]}>
           <Mac ref={macRef} vidPath='/img/mars.mov' position={[1.5, 0, -7]} scale={3} rotation={[0.5, -0.5, 0]}/>
         </Project>
-        <Project active={active} info={info[1]} txtposition={[-0.8, 0, -6.4]} tipposition={[-1.5, -1.3, -6.4]}>
+        <Project info={info[1]} txtposition={[-0.8, 0, -6.4]} tipposition={[-1.5, -1.3, -6.4]}>
           <Ipad ref={ipadRef} position={[-1.5, -0.8, -6.5]} rotation={[Math.PI / 2, Math.PI / 2 + 0.2, 0.1]} scale={4} />
         </Project>                          
-        <Project active={active} info={info[2]} txtposition={[-2, 1.1, -7]} tipposition={[-1.5, -0.5, -6.9]}>
+        <Project info={info[2]} txtposition={[-2, 1.1, -7]} tipposition={[-1.5, -0.5, -6.9]}>
           <Mac ref={macRef} vidPath='/img/hanoi.mov' position={[-1.5, 1.5, -7]} scale={3} rotation={[0.7, 0.5, 0]}/>
         </Project>
       </group>

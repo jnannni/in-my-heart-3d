@@ -1,17 +1,18 @@
 import { Float, Html, Text, useCursor } from '@react-three/drei'
 import {useState} from 'react'
+import { usePortalTransition } from '../contexts/portalTransitionContext';
 
 const Project = ({
-    active = '', 
     info = {name: '', description: '', skills: '', link: ''}, 
     txtposition: [x,y,z] = [0,0,0],
     tipposition: [tX,tY,tZ] = [0,0,0],
     children}) => {
         const [hovered, setHovered] = useState(false);
+        const {currentPortal} = usePortalTransition();
         useCursor(hovered);
         const meshOpacity = hovered ? 0.5 : 0;
         const txtOpacity = hovered ? 1 : 0;
-        const isDisabled = active !== '' && active === 'projects';
+        const isDisabled = currentPortal !== '' && currentPortal === 'projects';
 
         const openLink = () => {
             window.open(info.link, "_blank")?.focus();
@@ -23,7 +24,7 @@ const Project = ({
         onPointerOut={() => isDisabled ? setHovered(false) : undefined } 
         onClick={() => isDisabled ? openLink() : undefined }>
             {children}
-            <Text fillOpacity={active ? 1 : 0} color={'black'} fontSize={0.1} position={[x,y,z]} lineHeight={1} fontWeight={600} font="./fonts/Silkscreen-Regular.ttf">
+            <Text fillOpacity={currentPortal ? 1 : 0} color={'black'} fontSize={0.1} position={[x,y,z]} lineHeight={1} fontWeight={600} font="./fonts/Silkscreen-Regular.ttf">
                 {`${info.name}\n${info.description}\n${info.skills}`}
             </Text>
         </group>   

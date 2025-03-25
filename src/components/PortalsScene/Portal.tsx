@@ -9,38 +9,40 @@ import AboutMeCard from '../InfoCards/AboutMeCard'
 import ProjectsCard from '../InfoCards/ProjectsCard'
 import DesignCard from '../InfoCards/DesignCard'
 import SoftSkillsCard from '../InfoCards/SoftSkillsCard'
+import { usePortalTransition } from '../contexts/portalTransitionContext'
 
-const Portal = ({skillSetName = 'techno\nlogies', skills, active, setActive, ...props}) => {
+const Portal = ({skillSetName = 'techno\nlogies', skills, ...props}) => {
     const x = useControls('Light', {
         positionX: { value: 0, min: -50, max: 50, step: 1},
         positionY: { value: 0, min: -50, max: 50, step: 1},
         positionZ: { value: 0, min: -50, max: 50, step: 1},
     })
     const groupRef = useRef<THREE.Group>(null);
-    const ref = useRef<THREE.Mesh>(null);    
+    const ref = useRef<THREE.Mesh>(null);
+    const {currentPortal, setCurrentPortal} = usePortalTransition();    
     const portalRef = useRef<THREE.ShaderMaterial>(null);
-    const currentInfo = skillSetName === 'tech' ? <SkillsCard skills={skills} portalRef={portalRef} active={active}/> : 
-                    skillSetName === 'aboutMe' ? <AboutMeCard info={skills} active={active} portalRef={portalRef}/> : skillSetName === 'projects' ?
-                    <ProjectsCard active={active} info={skills}/> : skillSetName === 'design' ? <DesignCard active={active} info={skills} /> :
-                    skillSetName === 'softSkills' ? <SoftSkillsCard active={active} info={skills} /> : null;     
-    const isDisabled = active !== '' && active === skillSetName;     
+    const currentInfo = skillSetName === 'tech' ? <SkillsCard skills={skills} /> : 
+                    skillSetName === 'aboutMe' ? <AboutMeCard info={skills} portalRef={portalRef}/> : skillSetName === 'projects' ?
+                    <ProjectsCard info={skills}/> : skillSetName === 'design' ? <DesignCard info={skills} /> :
+                    skillSetName === 'softSkills' ? <SoftSkillsCard info={skills} /> : null;     
+    const isDisabled = currentPortal !== '' && currentPortal === skillSetName;     
 
     useFrame((_state, delta) => {
         if (portalRef.current) {
-            const worldOpen = active === skillSetName;                      
+            const worldOpen = currentPortal === skillSetName;                      
             easing.damp(portalRef.current, "blend", worldOpen ? 1 : 0, 0, delta);
         }        
     })
     
     const handleDoubleClick = (e: Event) => {
         e.stopPropagation();        
-        if (active !== '') {            
-            setActive('');                        
+        if (currentPortal !== '') {            
+            setCurrentPortal('');                        
             return;
         }
 
-        const activeState = active === skillSetName ? '' : skillSetName;        
-        setActive(activeState);                      
+        const activeState = currentPortal === skillSetName ? '' : skillSetName;        
+        setCurrentPortal(activeState);                      
     }
 
   return (

@@ -1,23 +1,24 @@
 import React from '../3dmodels/React'
-import { useEffect, useRef } from 'react';
+import { use, useEffect, useRef } from 'react';
 import { useControls } from 'leva';
 import * as THREE from 'three';
 import './styles.css';
 import { AccumulativeShadows, RandomizedLight, PerspectiveCamera, RenderTexture, RoundedBox, Text, Text3D, useTexture, Edges } from '@react-three/drei';
-import {useSpring, animated, easings} from '@react-spring/three'
 import Skill from './Skill';
 import CustomShapewTex from './CustomShapewTex';
+import { usePortalTransition } from '../contexts/portalTransitionContext';
 
 // lang, tech, design
-const SkillsCard = ({active='', portalRef, skills = [{name: 'React', level: '60'}, {name: 'React', level: '80'}]}) => {      
+const SkillsCard = ({skills = [{name: 'React', level: '60'}, {name: 'React', level: '80'}]}) => {      
+    const {currentPortal} = usePortalTransition();
     const htmlTexture = useTexture('./img/html.png');
     const cssTexture = useTexture('./img/css.png');
     const jsTexture = useTexture('./img/js.png');
     const threeTexture = useTexture('./img/three.png');
-    const blendValue = active ? 7 : 1.73;
+    const blendValue = currentPortal ? 7 : 1.73;
     const annotationStyle = {
         transition: 'all 1s',
-        opacity: active === 'tech' ? 1 : 0,        
+        opacity: currentPortal === 'tech' ? 1 : 0,        
     }
     const annotationStyleHidden = {
         transition: 'all 1s',

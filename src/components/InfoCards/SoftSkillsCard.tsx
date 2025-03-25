@@ -1,9 +1,11 @@
 import { Text3D, Edges, RandomizedLight, AccumulativeShadows, Float } from "@react-three/drei"
 import Avatar from "../3dmodels/Avatar";
+import { usePortalTransition } from "../contexts/portalTransitionContext";
 
-const SoftSkillsCard = ({active='', info = [{info: '', coord: [0, 0, 0] as [number, number, number]}]}) => {
-    const blendValue = active ? 5 : 1.5;
-    const opacity = active ? 1 : 0.5;
+const SoftSkillsCard = ({info = [{info: '', coord: [0, 0, 0] as [number, number, number]}]}) => {
+    const {currentPortal} = usePortalTransition();
+    const blendValue = currentPortal ? 5 : 1.5;
+    const opacity = currentPortal ? 1 : 0.5;
   return (
     <>
         <Text3D
