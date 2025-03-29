@@ -21,22 +21,22 @@ const aboutMe = [
 ]
 
 const softSkills = [
-    {info: 'Speaking business-fluent English', coord: [-2.5, -1.6, -6.5]},
-    {info: 'My mother tongue is Russian', coord: [-1.4, 1, -6.5]},
-    {info: 'Speaking B1 German', coord: [0.9, 0.5, -6.5]},
-    {info: 'Team-player', coord: [2, 1.5, -6.5]},
-    {info: 'Creativity is my second name', coord: [1.4, -0.5, -6.5]},
-    {info: 'Fast learner', coord: [-2, 0.3, -6.5]},    
+    {info: 'Speaking business-fluent English', coord: [-2.5, -1.6, -6.5] as [number, number, number]},
+    {info: 'My mother tongue is Russian', coord: [-1.4, 1, -6.5] as [number, number, number]},
+    {info: 'Speaking B1 German', coord: [0.9, 0.5, -6.5] as [number, number, number]},
+    {info: 'Team-player', coord: [2, 1.5, -6.5] as [number, number, number]},
+    {info: 'Creativity is my second name', coord: [1.4, -0.5, -6.5] as [number, number, number]},
+    {info: 'Fast learner', coord: [-2, 0.3, -6.5] as [number, number, number]},    
 ]
 
 const design = [
-  {name: 'Interaction Design', coord: [-2.5, -1.6, -6.5]},
-  {name: 'UX Design', coord: [-1.4, 1, -6.5]},
-  {name: 'User Research', coord: [0.9, 0.5, -6.5]},
-  {name: 'UI Design', coord: [2, 1.5, -6.5]},
-  {name: 'User Texting', coord: [1.4, -0.5, -6.5]},
-  {name: 'Usability Texting', coord: [-2, 0.3, -6.5]},
-  {name: 'Design Thinking', coord: [-3, -1, -6.5]}
+  {name: 'Interaction Design', coord: [-2.5, -1.6, -6.5] as [number, number, number]},
+  {name: 'UX Design', coord: [-1.4, 1, -6.5] as [number, number, number]},
+  {name: 'User Research', coord: [0.9, 0.5, -6.5] as [number, number, number]},
+  {name: 'UI Design', coord: [2, 1.5, -6.5] as [number, number, number]},
+  {name: 'User Texting', coord: [1.4, -0.5, -6.5] as [number, number, number]},
+  {name: 'Usability Texting', coord: [-2, 0.3, -6.5] as [number, number, number]},
+  {name: 'Design Thinking', coord: [-3, -1, -6.5] as [number, number, number]},
 ]
 
 const projects = [
@@ -45,8 +45,14 @@ const projects = [
   {name: 'Hanoi Tower', description: '', skills: 'TypeScript, HTML, CSS, PixelArt', link: 'https://github.com/jnannni/Hanoi_Tower/deployments/github-pages'}
 ]
 
+type DataType = 
+  | { name: string; level: string }[]
+  | { event: string; location: string; date: string; info?: string }[]
+  | { info: string; coord: [number, number, number] }[]
+  | { name: string; coord: [number, number, number] }[]
+  | { name: string; description: string; skills: string; link: string }[];
 
-const skillSet = {
+const skillSet: { [key: string]: DataType } = {
     tech: tech,
     aboutMe: aboutMe,
     softSkills: softSkills,
@@ -83,10 +89,12 @@ const Carousel = () => {
     <>
     {Object.entries(skillSet).map(([key, value], i) => {
       return (
-        <Portal key={key} skillSetName={key} skills={value}
-        position={[Math.sin((i / skillSetLength) * Math.PI * 2) * radius, 0, Math.cos((i / skillSetLength) * Math.PI * 2) * radius]}         
-        rotation={[0, (i / skillSetLength) * Math.PI * 2, 0]}
-        />
+        <group
+          key={key} 
+          position={[Math.sin((i / skillSetLength) * Math.PI * 2) * radius, 0, Math.cos((i / skillSetLength) * Math.PI * 2) * radius]}         
+          rotation={[0, (i / skillSetLength) * Math.PI * 2, 0]}>
+          <Portal skillSetName={key} skills={value as DataType}/>
+        </group>        
       )
     })} 
     <CameraControls ref={controlsRef} smoothTime={0.5} maxPolarAngle={Math.PI / 2} minPolarAngle={0}/>

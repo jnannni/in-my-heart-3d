@@ -5,4 +5,7 @@
     { "path": "./tsconfig.node.json" }
   ],
   "include": ["src"],
+  "compilerOptions": {
+    "jsx": "react-jsx" // or "react" if you're using an older version of React
+  }
 }

@@ -18,9 +18,8 @@ const DesignCard = ({info = [{name: '', coord: [0, 0, 0] as [number, number, num
         </Text3D>
         {info.map((item, index) => {            
             return (
-                <Float floatIntensity={0.2} rotationIntensity={0.2}>
-                    <Text3D
-                    key={index}
+                <Float key={index} floatIntensity={0.2} rotationIntensity={0.2}>
+                    <Text3D                    
                     font='./fonts/Inter_Bold.json'        
                     position={item.coord}                    
                     scale={0.2}

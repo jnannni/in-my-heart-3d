@@ -13,9 +13,9 @@ import { usePortalTransition } from '@contexts/portalTransitionContext'
 type DataType = 
 | { name: string; level: string }[]
 | { event: string; location: string; date: string; info?: string }[]
-| { name: string; description: string; skills: string; link: string }[]
+| { info: string; coord: [number, number, number] }[]
 | { name: string; coord: [number, number, number] }[]
-| { info: string; coord: [number, number, number] }[];
+| { name: string; description: string; skills: string; link: string }[];
 
 interface PortalProps {
     skillSetName: string;
@@ -25,7 +25,7 @@ interface PortalProps {
 const Portal = ({skillSetName = 'techno\nlogies', skills = [], ...props}: PortalProps) => {
     const groupRef = useRef<THREE.Group>(null);
     const {currentPortal, setCurrentPortal} = usePortalTransition();    
-    const portalRef = useRef<THREE.ShaderMaterial>(null);
+    const portalRef = useRef<THREE.ShaderMaterial | null>(null);
     const currentInfo = skillSetName === 'tech' ? <SkillsCard skills={skills as { name: string; level: string }[]} /> : 
                     skillSetName === 'aboutMe' ? <AboutMeCard info={skills as { event: string; location: string; date: string; info: string }[]} /> : skillSetName === 'projects' ?
                     <ProjectsCard info={skills as { name: string; description: string; skills: string; link: string }[]}/> : skillSetName === 'design' ? 
@@ -55,14 +55,10 @@ const Portal = ({skillSetName = 'techno\nlogies', skills = [], ...props}: Portal
     <group ref={groupRef} {...props}>
         <group>
             <RoundedBox args={[3, 3, 0.1]} name={skillSetName} onDoubleClick={isDisabled ? undefined : handleDoubleClick}>                      
-                <MeshPortalMaterial ref={portalRef} side={THREE.DoubleSide}>
+                <MeshPortalMaterial ref={portalRef as any} side={THREE.DoubleSide} blur={0} resolution={1024}>
                     <group>                                          
                         <ambientLight intensity={0.5} />                             
                         <Environment preset='city' />
-                        {/* <rectAreaLight width={30} height={100} position={[-3, -4, -16]} intensity={2} lookAt={[0,0,0]}/>               */}
-                        {/* <Environment preset="city"> 
-                            <Lightformer ref={ref} intensity={1} form="ring" color="red" rotation-y={Math.PI / 2} position={[-1, 7, -3]} scale={[10, 10, 1]} />
-                        </Environment>  */}
                         {currentInfo}                           
                     </group>
                 </MeshPortalMaterial>        

@@ -27,7 +27,7 @@ const Skill = ({
     <Float floatIntensity={0.2} rotationIntensity={0.2}>
         <group ref={groupRef} position={[x, y, z]}>
             {children}
-            <Annotation targetRef={groupRef} position={[aX, aY, aZ]} style={annotationStyle}>
+            <Annotation targetRef={groupRef as React.RefObject<THREE.Object3D>} position={[aX, aY, aZ]} style={annotationStyle}>
                 <div className='skill-display'>
                     <h3>{skillName}</h3>
                     <div className='level'>

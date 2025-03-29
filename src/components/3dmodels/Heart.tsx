@@ -44,7 +44,7 @@ const Heart =({...props}) => {
                       name="Crystal_Heart_Crystal_Heart_Mat_0"
                       castShadow
                       receiveShadow
-                      geometry={nodes.Crystal_Heart_Crystal_Heart_Mat_0.geometry}
+                      geometry={(nodes.Crystal_Heart_Crystal_Heart_Mat_0 as THREE.Mesh).geometry}
                       material={materials.Crystal_Heart_Mat}
                     />
                   </group>
