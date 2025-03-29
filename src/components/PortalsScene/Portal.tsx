@@ -10,14 +10,27 @@ import DesignCard from '@infoCards/DesignCard'
 import SoftSkillsCard from '@infoCards/SoftSkillsCard'
 import { usePortalTransition } from '@contexts/portalTransitionContext'
 
-const Portal = ({skillSetName = 'techno\nlogies', skills = [], ...props}) => {
+type DataType = 
+| { name: string; level: string }[]
+| { event: string; location: string; date: string; info?: string }[]
+| { name: string; description: string; skills: string; link: string }[]
+| { name: string; coord: [number, number, number] }[]
+| { info: string; coord: [number, number, number] }[];
+
+interface PortalProps {
+    skillSetName: string;
+    skills: DataType;
+}
+
+const Portal = ({skillSetName = 'techno\nlogies', skills = [], ...props}: PortalProps) => {
     const groupRef = useRef<THREE.Group>(null);
     const {currentPortal, setCurrentPortal} = usePortalTransition();    
     const portalRef = useRef<THREE.ShaderMaterial>(null);
-    const currentInfo = skillSetName === 'tech' ? <SkillsCard skills={skills} /> : 
-                    skillSetName === 'aboutMe' ? <AboutMeCard info={skills} /> : skillSetName === 'projects' ?
-                    <ProjectsCard info={skills}/> : skillSetName === 'design' ? <DesignCard info={skills} /> :
-                    skillSetName === 'softSkills' ? <SoftSkillsCard info={skills} /> : null;     
+    const currentInfo = skillSetName === 'tech' ? <SkillsCard skills={skills as { name: string; level: string }[]} /> : 
+                    skillSetName === 'aboutMe' ? <AboutMeCard info={skills as { event: string; location: string; date: string; info: string }[]} /> : skillSetName === 'projects' ?
+                    <ProjectsCard info={skills as { name: string; description: string; skills: string; link: string }[]}/> : skillSetName === 'design' ? 
+                    <DesignCard info={skills as { name: string; coord: [number, number, number] }[]} /> :
+                    skillSetName === 'softSkills' ? <SoftSkillsCard info={skills as { info: string; coord: [number, number, number] }[]} /> : null;     
     const isDisabled = currentPortal !== '' && currentPortal === skillSetName; 
 
     useFrame((_state, delta) => {

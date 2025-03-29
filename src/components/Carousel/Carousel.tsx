@@ -3,7 +3,7 @@ import Portal from "../PortalsScene/Portal"
 import { useEffect, useState, useRef } from "react"
 import * as THREE from 'three'
 import { useThree } from "@react-three/fiber"
-import { usePortalTransition } from "../contexts/portalTransitionContext"
+import { usePortalTransition } from "@contexts/portalTransitionContext"
 
 const tech = [
     {name: 'React', level: '85'},
@@ -44,6 +44,7 @@ const projects = [
   {name: 'Concept Design of Smart Home app', description: '', skills: 'UX Design, User research,\nUsability Testing, Figma', link: 'https://jnannni.github.io/mars-survival-index/'},
   {name: 'Hanoi Tower', description: '', skills: 'TypeScript, HTML, CSS, PixelArt', link: 'https://github.com/jnannni/Hanoi_Tower/deployments/github-pages'}
 ]
+
 
 const skillSet = {
     tech: tech,
