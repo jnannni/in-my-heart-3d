@@ -1,9 +1,17 @@
 import { Float } from '@react-three/drei'
-import React, { useRef, useState } from 'react'
+import { useRef } from 'react'
 import Annotation from './Annotation'
 import './styles.css';
 import * as THREE from 'three'
-import { Vector3 } from 'three';
+
+interface SkillProps {
+    groupPosition?: [number, number, number]
+    annotationPosition?: [number, number, number]
+    annotationStyle?: React.CSSProperties
+    skillName?: string
+    skillLevel?: string
+    children?: React.ReactNode
+}
 
 const Skill = ({
     groupPosition: [x, y, z] = [0,0,0],
@@ -11,7 +19,7 @@ const Skill = ({
     annotationStyle = {}, 
     skillName = '', 
     skillLevel = '', 
-    children}) => { 
+    children}: SkillProps) => { 
         
         const groupRef = useRef<THREE.Group>(null);
     

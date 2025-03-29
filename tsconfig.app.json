@@ -20,7 +20,17 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["./components/*"],
+      "@assets/*": ["./assets/*"],
+      "@loader/*": ["./components/loader/*"],
+      "@3dmodels/*": ["./components/3dmodels/*"],
+      "@contexts/*": ["./components/contexts/*"],
+      "@infoCards/*": ["./components/InfoCards/*"],
+    },
   },
   "include": ["src"]
 }

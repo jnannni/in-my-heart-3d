@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useMemo, memo } from 'react'
-import Mac from '../3dmodels/Mac'
-import Ipad from '../3dmodels/Ipad'
+import { useRef } from 'react'
+import Mac from '@3dmodels/Mac'
+import Ipad from '@3dmodels/Ipad'
 import * as THREE from 'three'
-import { useControls } from 'leva'
-import { Text3D, Edges, AccumulativeShadows, RandomizedLight, Float, Text } from '@react-three/drei'
+import { Text3D, Edges, AccumulativeShadows, RandomizedLight } from '@react-three/drei'
 import Project from './Project'
 
 const ProjectsCard = ({active='', info = [{name: '', description: '', skills: '', link: ''}]}) => {
@@ -11,11 +10,6 @@ const ProjectsCard = ({active='', info = [{name: '', description: '', skills: ''
   const macRef = useRef<THREE.Mesh>(null);
   const blendValue = active ? 5 : 1.5;
   const opacity = active ? 1 : 0.5;
-  const x = useControls('RandLight', {
-          positionX: { value: 0, min: -10, max: 10, step: 1},
-          positionY: { value: 0, min: -10, max: 10, step: 1},
-          positionZ: { value: 0, min: -10, max: 10, step: 1},
-      })
 
   return (
     <>

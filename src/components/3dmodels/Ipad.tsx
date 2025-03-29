@@ -5,12 +5,10 @@ License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 Source: https://sketchfab.com/3d-models/ipad-air4-d8032df3d8c0455394ea527ef4ddaef5
 Title: Ipad Air4
 */
-
-import React, { useRef, useState } from 'react'
-import { useGLTF, useVideoTexture, useCursor } from '@react-three/drei'
+import { useGLTF, useVideoTexture } from '@react-three/drei'
 import * as THREE from 'three'
 
-const Ipad = (props) => {
+const Ipad = ({...props}) => {
   const { nodes, materials } = useGLTF('/models/ipad.glb')
   const vid = useVideoTexture('/img/ipad.mp4')
   vid.flipY = false;
@@ -25,73 +23,73 @@ const Ipad = (props) => {
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_4.geometry}
+          geometry={(nodes.Object_4 as THREE.Mesh).geometry}
           material={materials.steel}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_5.geometry}
+          geometry={(nodes.Object_5 as THREE.Mesh).geometry}
           material={materials['.001']}>
             <meshBasicMaterial map={vid}/>
             </mesh>
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_6.geometry}
+          geometry={(nodes.Object_6 as THREE.Mesh).geometry}
           material={materials.Logo}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_7.geometry}
+          geometry={(nodes.Object_7 as THREE.Mesh).geometry}
           material={materials.Material}/>
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_8.geometry}
+          geometry={(nodes.Object_8 as THREE.Mesh).geometry}
           material={materials.lense}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_9.geometry}
+          geometry={(nodes.Object_9 as THREE.Mesh).geometry}
           material={materials.glass}/>
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_10.geometry}
+          geometry={(nodes.Object_10 as THREE.Mesh).geometry}
           material={materials.white}
         />
         <group scale={[1, 1.065, 1]}>
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Object_12.geometry}
+            geometry={(nodes.Object_12 as THREE.Mesh).geometry}
             material={materials.material}
           />
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Object_13.geometry}
+            geometry={(nodes.Object_13 as THREE.Mesh).geometry}
             material={materials.Material}
           />
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Object_14.geometry}
+            geometry={(nodes.Object_14 as THREE.Mesh).geometry}
             material={materials.steel}
           />
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Object_15.geometry}
+            geometry={(nodes.Object_15 as THREE.Mesh).geometry}
             material={materials.bronze}
           />
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Object_16.geometry}
+            geometry={(nodes.Object_16 as THREE.Mesh).geometry}
             material={materials.white}
           />
         </group>
@@ -99,19 +97,19 @@ const Ipad = (props) => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Object_18.geometry}
+            geometry={(nodes.Object_18 as THREE.Mesh).geometry}
             material={materials.Material}
           />
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Object_19.geometry}
+            geometry={(nodes.Object_19 as THREE.Mesh).geometry}
             material={materials.right_apple_pencil_dock}
           />
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Object_20.geometry}
+            geometry={(nodes.Object_20 as THREE.Mesh).geometry}
             material={materials.black}
           />
         </group>

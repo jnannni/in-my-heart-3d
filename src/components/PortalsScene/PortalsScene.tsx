@@ -1,9 +1,9 @@
-import { Environment, Html } from '@react-three/drei'
-import { Canvas, useThree } from '@react-three/fiber'
-import { Suspense, useEffect } from 'react'
+import { Environment } from '@react-three/drei'
+import { useThree } from '@react-three/fiber'
+import { useEffect } from 'react'
 import './style.css';
-import Carousel from '../Carousel/Carousel'
-import Heart from '../3dmodels/Heart'
+import Carousel from '@components/Carousel'
+import Heart from '@3dmodels/Heart'
 
 const PortalsScene = () => {
   const {camera} = useThree();

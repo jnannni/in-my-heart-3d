@@ -1,29 +1,17 @@
 import { useThree } from '@react-three/fiber'
-import React, {useEffect, useState, useRef } from 'react'
-import GlassWall from './3dmodels/GlassWall'
-import { Environment, CameraControls, Html, Text3D } from '@react-three/drei'
-import './style.css'
-import WallShattered from './3dmodels/WallShattered'
+import {useEffect, useState, useRef } from 'react'
+import GlassWall from '@3dmodels/GlassWall'
+import { Environment, CameraControls,Text3D } from '@react-three/drei'
+import WallShattered from '@3dmodels/WallShattered'
 import { Physics } from '@react-three/rapier'
-import ShatterBeginning from './3dmodels/ShatterBeginning'
-import ShatterMiddle from './3dmodels/ShatterMIddle'
-import Heart from './3dmodels/Heart'
-import { useControls } from 'leva'
+import ShatterBeginning from '@3dmodels/ShatterBeginning'
+import ShatterMiddle from '@3dmodels/ShatterMIddle'
+import Heart from '@3dmodels/Heart'
 import * as THREE from 'three'
-import { useSceneTransition } from './contexts/sceneTransitionContext'
+import { useSceneTransition } from '@contexts/sceneTransitionContext'
+import './style.css'
 
-const MainScene = () => {
-  const x = useControls('Heart', {
-    scale: { value: 1, min: 0.1, max: 10, step: 0.1},
-    positionX: { value: 0, min: -10, max: 10, step: 0.1},
-    positionY: { value: -2.3, min: -10, max: 10, step: 0.1},
-    positionZ: { value: 4, min: -10, max: 10, step: 0.1},
-  })
-  const c = useControls('Camera', {
-    positionX: { value: 0, min: -10, max: 20, step: 0.1},
-    positionY: { value: 0, min: -10, max: 10, step: 0.1},
-    positionZ: { value: 0, min: -10, max: 10, step: 0.1},
-  })  
+const MainScene = () => { 
   const [index, setIndex] = useState(0);  
   const controlsRef = useRef<CameraControls>(null);
   const scene = useThree((state) => state.scene);
@@ -43,7 +31,7 @@ const MainScene = () => {
         }, 3000)       
       } else controlsRef.current?.setLookAt(0, 0, -8, 0, 0, 0, true);      
     }
-  }, [index])
+  }, [index, scene, setCurrentScene])
 
   return (
     <>                

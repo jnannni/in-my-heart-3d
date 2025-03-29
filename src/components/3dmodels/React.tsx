@@ -6,11 +6,11 @@ Source: https://sketchfab.com/3d-models/react-logo-76174ceeba96487f9863f974636f6
 Title: React logo
 */
 
-import { useGLTF, Edges, Html } from '@react-three/drei'
+import { useGLTF, Edges } from '@react-three/drei'
 import { useRef } from 'react';
 import * as THREE from 'three';
 
-const React = (props) => {
+const React = ({...props}) => {
     const ref = useRef<THREE.Group>(null);
   const { nodes, materials } = useGLTF('/models/react.glb')
   return (
@@ -18,7 +18,7 @@ const React = (props) => {
       <group scale={0.01}>
         <mesh
           receiveShadow
-          geometry={nodes['React-Logo_Material002_0'].geometry}
+          geometry={(nodes['React-Logo_Material002_0'] as THREE.Mesh).geometry}
           material={materials['Material.002']}
           position={[0, 7.935, 18.102]}
           rotation={[0, 0, -Math.PI / 2]}

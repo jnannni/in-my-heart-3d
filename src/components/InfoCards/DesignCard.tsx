@@ -1,5 +1,5 @@
 import { Text3D, Edges, RandomizedLight, AccumulativeShadows, Float } from "@react-three/drei"
-import { usePortalTransition } from "../contexts/portalTransitionContext";
+import { usePortalTransition } from "@contexts/portalTransitionContext";
 
 const DesignCard = ({info = [{name: '', coord: [0, 0, 0] as [number, number, number]}]}) => {
   const {currentPortal} = usePortalTransition();

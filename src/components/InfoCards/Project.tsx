@@ -1,12 +1,19 @@
-import { Float, Html, Text, useCursor } from '@react-three/drei'
+import { Float, Text, useCursor } from '@react-three/drei'
 import {useState} from 'react'
-import { usePortalTransition } from '../contexts/portalTransitionContext';
+import { usePortalTransition } from '@contexts/portalTransitionContext';
+
+interface ProjectProps {
+    info: {name: string, description: string, skills: string, link: string},
+    txtposition: [number, number, number],
+    tipposition: [number, number, number],
+    children: React.ReactNode
+}
 
 const Project = ({
     info = {name: '', description: '', skills: '', link: ''}, 
     txtposition: [x,y,z] = [0,0,0],
     tipposition: [tX,tY,tZ] = [0,0,0],
-    children}) => {
+    children}: ProjectProps) => {
         const [hovered, setHovered] = useState(false);
         const {currentPortal} = usePortalTransition();
         useCursor(hovered);

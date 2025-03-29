@@ -7,14 +7,14 @@ Title: Low Poly Spinning Heart!
 */
 
 import * as THREE from 'three'
-import { useEffect, useRef, useState } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import {useRef} from 'react'
+import { useGLTF} from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import {useSpring, animated, easings} from '@react-spring/three'
 
-const Heart =({index = 0, ...props}) => {
+const Heart =({...props}) => {
   const group = useRef<THREE.Group>(null)
-  const { nodes, materials, animations } = useGLTF('/models/crystal_heart.glb')  
+  const { nodes, materials } = useGLTF('/models/crystal_heart.glb')  
 
   const { heartScale } = useSpring({
       from: { heartScale: 1 },

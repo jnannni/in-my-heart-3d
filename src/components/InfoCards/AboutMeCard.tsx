@@ -1,14 +1,10 @@
-import { Text3D, Edges, AccumulativeShadows, RandomizedLight, Html, Text, Billboard } from "@react-three/drei"
-import Earth from "../3dmodels/Earth";
-import { usePortalTransition } from "../contexts/portalTransitionContext";
+import { Text3D, Edges, AccumulativeShadows, RandomizedLight, Text } from "@react-three/drei"
+import Earth from "@3dmodels/Earth";
+import { usePortalTransition } from "@contexts/portalTransitionContext";
 
-const AboutMeCard = ({info = [{event: '', location: '', date: '', info: ''}], portalRef}) => {
+const AboutMeCard = ({info = [{event: '', location: '', date: '', info: ''}]}) => {
     const {currentPortal} = usePortalTransition();
     const blendValue = currentPortal ? 7 : 1.5;
-    const annotationStyle = {
-        transition: 'all 1s',
-        opacity: currentPortal === 'aboutMe' ? 1 : 0,        
-    }
     
   return (
     <>

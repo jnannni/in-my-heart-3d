@@ -6,17 +6,15 @@ Source: https://sketchfab.com/3d-models/earth-cartoon-8980e2238c534516bc2345703c
 Title: Earth cartoon
 */
 
-import React, { useEffect, useRef, useState } from 'react'
-import { useGLTF, useAnimations, useCursor, Text } from '@react-three/drei'
+import { useEffect, useRef } from 'react'
+import { useGLTF, useAnimations } from '@react-three/drei'
 import * as THREE from 'three'
-import Marker from '../InfoCards/Marker'
+import Marker from '@infoCards/Marker'
 
-const Earth =({info = [], ...props}) => {
+const Earth =({...props}) => {
   const group = useRef<THREE.Group>(null)
   const { nodes, materials, animations } = useGLTF('./models/earth.glb')
   const { actions } = useAnimations(animations, group) 
-  const [hovered, setHovered] = useState(false);
-  useCursor(hovered); 
 
   useEffect(() => {
     actions['Animation']?.play();
@@ -29,9 +27,9 @@ const Earth =({info = [], ...props}) => {
           <group name="root">
             <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}> 
             <group rotation={[-props.rotation[0], -props.rotation[1], -props.rotation[2]]}>              
-              <Marker parentRef={group} position={[0.9, 0.4, 1]} rotation={[0, 0, 2.7* Math.PI]} setHovered={setHovered}/>                                      
-              <Marker parentRef={group} position={[-0.8, 0.4, 1]} rotation={[0, 0, -Math.PI / 2]} setHovered={setHovered} />
-              <Marker parentRef={group} position={[-0.4, 0.8, 1]} rotation={[0, 0, Math.PI]} setHovered={setHovered} />
+              <Marker parentRef={group} position={[0.9, 0.4, 1]} rotation={[0, 0, 2.7* Math.PI]}/>                                      
+              <Marker parentRef={group} position={[-0.8, 0.4, 1]} rotation={[0, 0, -Math.PI / 2]} />
+              <Marker parentRef={group} position={[-0.4, 0.8, 1]} rotation={[0, 0, Math.PI]} />
             </group>              
               <group
                 name="arbol007_36"
@@ -42,7 +40,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_64"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_64.geometry}
+                  geometry={(nodes.Object_64 as THREE.Mesh).geometry}
                   material={materials.vegetacin}
                 />
               </group>
@@ -55,9 +53,9 @@ const Earth =({info = [], ...props}) => {
                   <group name="colaBallena001_9" />
                   <skinnedMesh
                     name="Object_15"
-                    geometry={nodes.Object_15.geometry}
+                    geometry={(nodes.Object_15 as THREE.Mesh).geometry}
                     material={materials.ballena}
-                    skeleton={nodes.Object_15.skeleton}
+                    skeleton={(nodes.Object_15 as THREE.SkinnedMesh).skeleton}
                   />
                   <primitive object={nodes.GLTF_created_0_rootJoint} />
                 </group>
@@ -71,9 +69,9 @@ const Earth =({info = [], ...props}) => {
                   <group name="colaBallena002_16" />
                   <skinnedMesh
                     name="Object_25"
-                    geometry={nodes.Object_25.geometry}
+                    geometry={(nodes.Object_25 as THREE.Mesh).geometry}
                     material={materials.ballena}
-                    skeleton={nodes.Object_25.skeleton}
+                    skeleton={(nodes.Object_25 as THREE.SkinnedMesh).skeleton}
                   />
                   <primitive object={nodes.GLTF_created_1_rootJoint} />
                 </group>
@@ -87,9 +85,9 @@ const Earth =({info = [], ...props}) => {
                   <group name="colaBallena003_23" />
                   <skinnedMesh
                     name="Object_35"
-                    geometry={nodes.Object_35.geometry}
+                    geometry={(nodes.Object_35 as THREE.Mesh).geometry}
                     material={materials.ballena}
-                    skeleton={nodes.Object_35.skeleton}
+                    skeleton={(nodes.Object_35 as THREE.SkinnedMesh).skeleton}
                   />
                   <primitive object={nodes.GLTF_created_2_rootJoint} />
                 </group>
@@ -103,7 +101,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_54"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_54.geometry}
+                  geometry={(nodes.Object_54 as THREE.Mesh).geometry}
                   material={materials['ox-logo']}
                 />
               </group>
@@ -121,7 +119,7 @@ const Earth =({info = [], ...props}) => {
                     name="Object_62"
                     castShadow
                     receiveShadow
-                    geometry={nodes.Object_62.geometry}
+                    geometry={(nodes.Object_62 as THREE.Mesh).geometry}
                     material={materials['Atlas.2']}
                   />
                 </group>
@@ -129,7 +127,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_60"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_60.geometry}
+                  geometry={(nodes.Object_60 as THREE.Mesh).geometry}
                   material={materials['Atlas.2']}
                 />
               </group>
@@ -143,7 +141,7 @@ const Earth =({info = [], ...props}) => {
                     name="Object_44"
                     castShadow
                     receiveShadow
-                    geometry={nodes.Object_44.geometry}
+                    geometry={(nodes.Object_44 as THREE.Mesh).geometry}
                     material={materials['ox-logo']}
                   />
                 </group>
@@ -156,7 +154,7 @@ const Earth =({info = [], ...props}) => {
                     name="Object_46"
                     castShadow
                     receiveShadow
-                    geometry={nodes.Object_46.geometry}
+                    geometry={(nodes.Object_46 as THREE.Mesh).geometry}
                     material={materials['Atlas.2']}
                   />
                 </group>
@@ -164,7 +162,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_42"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_42.geometry}
+                  geometry={(nodes.Object_42 as THREE.Mesh).geometry}
                   material={materials['Atlas.2']}
                 />
               </group>
@@ -177,7 +175,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_10"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_10.geometry}
+                  geometry={(nodes.Object_10 as THREE.Mesh).geometry}
                   material={materials['Atlas.2']}
                 />
               </group>
@@ -190,7 +188,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_8"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_8.geometry}
+                  geometry={(nodes.Object_8 as THREE.Mesh).geometry}
                   material={materials.Atlas_1}
                 />
               </group>
@@ -203,7 +201,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_52"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_52.geometry}
+                  geometry={(nodes.Object_52 as THREE.Mesh).geometry}
                   material={materials['Atlas.2']}
                 />
               </group>
@@ -216,7 +214,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_66"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_66.geometry}
+                  geometry={(nodes.Object_66 as THREE.Mesh).geometry}
                   material={materials.nube}
                 />
               </group>
@@ -229,7 +227,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_70"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_70.geometry}
+                  geometry={(nodes.Object_70 as THREE.Mesh).geometry}
                   material={materials.nube}
                 />
               </group>
@@ -242,7 +240,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_74"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_74.geometry}
+                  geometry={(nodes.Object_74 as THREE.Mesh).geometry}
                   material={materials.nube}
                 />
               </group>
@@ -255,7 +253,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_76"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_76.geometry}
+                  geometry={(nodes.Object_76 as THREE.Mesh).geometry}
                   material={materials.nube}
                 />
               </group>
@@ -268,7 +266,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_78"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_78.geometry}
+                  geometry={(nodes.Object_78 as THREE.Mesh).geometry}
                   material={materials.nube}
                 />
               </group>
@@ -281,7 +279,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_68"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_68.geometry}
+                  geometry={(nodes.Object_68 as THREE.Mesh).geometry}
                   material={materials.nube}
                 />
               </group>
@@ -294,7 +292,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_72"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_72.geometry}
+                  geometry={(nodes.Object_72 as THREE.Mesh).geometry}
                   material={materials.nube}
                 />
               </group>
@@ -307,7 +305,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_80"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_80.geometry}
+                  geometry={(nodes.Object_80 as THREE.Mesh).geometry}
                   material={materials.nube}
                 />
               </group>
@@ -320,7 +318,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_82"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_82.geometry}
+                  geometry={(nodes.Object_82 as THREE.Mesh).geometry}
                   material={materials.nube}
                 />
               </group>
@@ -329,7 +327,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_4"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_4.geometry}
+                  geometry={(nodes.Object_4 as THREE.Mesh).geometry}
                   material={materials.agua}
                 />
                 <group name="tierra_0" scale={0.996}>
@@ -337,7 +335,7 @@ const Earth =({info = [], ...props}) => {
                     name="Object_6"
                     castShadow
                     receiveShadow
-                    geometry={nodes.Object_6.geometry}
+                    geometry={(nodes.Object_6 as THREE.Mesh).geometry}
                     material={materials.tierra}/>
                 </group>
               </group>
@@ -350,7 +348,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_56"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_56.geometry}
+                  geometry={(nodes.Object_56 as THREE.Mesh).geometry}
                   material={materials['ox-logo']}
                 />
               </group>
@@ -363,7 +361,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_58"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_58.geometry}
+                  geometry={(nodes.Object_58 as THREE.Mesh).geometry}
                   material={materials['ox-logo']}
                 />
               </group>
@@ -376,7 +374,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_48"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_48.geometry}
+                  geometry={(nodes.Object_48 as THREE.Mesh).geometry}
                   material={materials['Atlas.2']}
                 />
               </group>
@@ -389,7 +387,7 @@ const Earth =({info = [], ...props}) => {
                   name="Object_50"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_50.geometry}
+                  geometry={(nodes.Object_50 as THREE.Mesh).geometry}
                   material={materials['Atlas.2']}
                 />
               </group>

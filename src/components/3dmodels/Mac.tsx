@@ -6,8 +6,8 @@ Source: https://sketchfab.com/3d-models/macbook-laptop-7ceb46a1425b475fa7f6bf192
 Title: MacBook Laptop
 */
 
-import React, { useRef } from 'react'
 import { useGLTF, useVideoTexture } from '@react-three/drei'
+import * as THREE from 'three'
 
 const Mac = ({vidPath = '', ...props}) => {
   const { nodes, materials } = useGLTF('/models/mac.glb')
@@ -18,296 +18,296 @@ const Mac = ({vidPath = '', ...props}) => {
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.xVreGKoBGSZYMij.geometry}
+          geometry={(nodes.xVreGKoBGSZYMij as THREE.Mesh).geometry}
           material={materials.dKLyhhkbEyMrqky}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.CTBERffHyoCSDBm_0.geometry}
+          geometry={(nodes.CTBERffHyoCSDBm_0 as THREE.Mesh).geometry}
           material={materials.YjmXmicdBWsFQyD}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.hczGzWOWpedUDYd_0.geometry}
+          geometry={(nodes.hczGzWOWpedUDYd_0 as THREE.Mesh).geometry}
           material={materials.pEUnNAGXCoAFoUk}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.biHEvGDNnTqamRb.geometry}
+          geometry={(nodes.biHEvGDNnTqamRb as THREE.Mesh).geometry}
           material={materials.dFfswgailNMtaYj}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.TyOrApjEOLhYCaF.geometry}
+          geometry={(nodes.TyOrApjEOLhYCaF as THREE.Mesh).geometry}
           material={materials.AZirwHJdxxcChtp}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.vrIckaCELZpnnNK.geometry}
+          geometry={(nodes.vrIckaCELZpnnNK as THREE.Mesh).geometry}
           material={materials.dkOmcmuFedorUKC}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.SadnAkehSlxIwKv.geometry}
+          geometry={(nodes.SadnAkehSlxIwKv as THREE.Mesh).geometry}
           material={materials.VNZklasZKSWjWUk}>
             <meshBasicMaterial map={vid}/>
         </mesh>
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.OrhpMXCxeprcNok.geometry}
+          geometry={(nodes.OrhpMXCxeprcNok as THREE.Mesh).geometry}
           material={materials.OfvrpEsWzbOpbcs}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.aLWGnOLpsFWVSfy.geometry}
+          geometry={(nodes.aLWGnOLpsFWVSfy as THREE.Mesh).geometry}
           material={materials.iFCKstMLETFqCmZ}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.WDUVUVPpNjdIPkb.geometry}
+          geometry={(nodes.WDUVUVPpNjdIPkb as THREE.Mesh).geometry}
           material={materials.ZPlxrBOYjSNYvVB}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.NqUinIWcwSlXpvt.geometry}
+          geometry={(nodes.NqUinIWcwSlXpvt as THREE.Mesh).geometry}
           material={materials.rvYnnyqXrbFJXxh}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.MaufYfIBnxcfRgH.geometry}
+          geometry={(nodes.MaufYfIBnxcfRgH as THREE.Mesh).geometry}
           material={materials.SsSIPrCyVNTOxvd}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.aIqeGXayDxWnOWQ.geometry}
+          geometry={(nodes.aIqeGXayDxWnOWQ as THREE.Mesh).geometry}
           material={materials.EKOOVJzobzfBYEj}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.HrtjMXqDCcINmDE_0.geometry}
+          geometry={(nodes.HrtjMXqDCcINmDE_0 as THREE.Mesh).geometry}
           material={materials.BfIgIOaUEgyoEft}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.zWqVyCKpTAuZNiu_0.geometry}
+          geometry={(nodes.zWqVyCKpTAuZNiu_0 as THREE.Mesh).geometry}
           material={materials.zFJMMvikHFjtmzd}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.MYVKQTLmUkzzlBj_0.geometry}
+          geometry={(nodes.MYVKQTLmUkzzlBj_0 as THREE.Mesh).geometry}
           material={materials.jIhmcgKbjDOICsY}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.qEJjkxdFZFWJWzR_0.geometry}
+          geometry={(nodes.qEJjkxdFZFWJWzR_0 as THREE.Mesh).geometry}
           material={materials.JKvAHnqjqlqshmY}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.lvlCIzdfTmsrnsM.geometry}
+          geometry={(nodes.lvlCIzdfTmsrnsM as THREE.Mesh).geometry}
           material={materials.iFCKstMLETFqCmZ}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.eeWSraIVipLsSmX_0.geometry}
+          geometry={(nodes.eeWSraIVipLsSmX_0 as THREE.Mesh).geometry}
           material={materials.JKvAHnqjqlqshmY}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.PgbYkhvRdcmMeGL.geometry}
+          geometry={(nodes.PgbYkhvRdcmMeGL as THREE.Mesh).geometry}
           material={materials.wOIDWopwzKBeTNU}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.rktWdhtZkCSmqne.geometry}
+          geometry={(nodes.rktWdhtZkCSmqne as THREE.Mesh).geometry}
           material={materials.ZrrjpMZNDbttBCc}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.hztTkkTJBJTZDmk.geometry}
+          geometry={(nodes.hztTkkTJBJTZDmk as THREE.Mesh).geometry}
           material={materials.ZrrjpMZNDbttBCc}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.bHBjPHbrqJmhyoR.geometry}
+          geometry={(nodes.bHBjPHbrqJmhyoR as THREE.Mesh).geometry}
           material={materials.ZrrjpMZNDbttBCc}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.HHcJitDCPTdgnFk.geometry}
+          geometry={(nodes.HHcJitDCPTdgnFk as THREE.Mesh).geometry}
           material={materials.RMDHOHZakhhXXHT}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.DRGkWmkJlgmNDJU.geometry}
+          geometry={(nodes.DRGkWmkJlgmNDJU as THREE.Mesh).geometry}
           material={materials.RMDHOHZakhhXXHT}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.KMwpdMtieDqmHVU.geometry}
+          geometry={(nodes.KMwpdMtieDqmHVU as THREE.Mesh).geometry}
           material={materials.RMDHOHZakhhXXHT}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.KgPDMIRPrxAynTV.geometry}
+          geometry={(nodes.KgPDMIRPrxAynTV as THREE.Mesh).geometry}
           material={materials.hZBlDyddxAQhuPm}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.XwGJfoaIrduFPcU.geometry}
+          geometry={(nodes.XwGJfoaIrduFPcU as THREE.Mesh).geometry}
           material={materials.YjmXmicdBWsFQyD}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.ACMWKGtOCqXifQY.geometry}
+          geometry={(nodes.ACMWKGtOCqXifQY as THREE.Mesh).geometry}
           material={materials.RMDHOHZakhhXXHT}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.BkHyotPbPWzwAAj.geometry}
+          geometry={(nodes.BkHyotPbPWzwAAj as THREE.Mesh).geometry}
           material={materials.sRPrqogRtliLLae}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.bkcxDtALZjuqGGQ.geometry}
+          geometry={(nodes.bkcxDtALZjuqGGQ as THREE.Mesh).geometry}
           material={materials.RMDHOHZakhhXXHT}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.ebZHPVwKTmqvgbU.geometry}
+          geometry={(nodes.ebZHPVwKTmqvgbU as THREE.Mesh).geometry}
           material={materials.kDpbvvjwMgCSCmF}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.uSnVzUkbvcGaVtm.geometry}
+          geometry={(nodes.uSnVzUkbvcGaVtm as THREE.Mesh).geometry}
           material={materials.AqVxlXuHIFahLKs}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.znOBoeqnOAcWvld.geometry}
+          geometry={(nodes.znOBoeqnOAcWvld as THREE.Mesh).geometry}
           material={materials.dKLyhhkbEyMrqky}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.tIZmzvOOHrlOFci.geometry}
+          geometry={(nodes.tIZmzvOOHrlOFci as THREE.Mesh).geometry}
           material={materials.oKQWdLrXUCbYByI}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.UmfOhraHkqkMHJr.geometry}
+          geometry={(nodes.UmfOhraHkqkMHJr as THREE.Mesh).geometry}
           material={materials.OFvWomWIIUgmKKA}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.roXkINNmErodbSy.geometry}
+          geometry={(nodes.roXkINNmErodbSy as THREE.Mesh).geometry}
           material={materials.oKQWdLrXUCbYByI}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.wWWhLQmmNVhThGV.geometry}
+          geometry={(nodes.wWWhLQmmNVhThGV as THREE.Mesh).geometry}
           material={materials.OFvWomWIIUgmKKA}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.JoRHkRchuIHZFdI.geometry}
+          geometry={(nodes.JoRHkRchuIHZFdI as THREE.Mesh).geometry}
           material={materials.mEMAJQfiigHeUXV}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.qJLFXXZhlqhKvcM.geometry}
+          geometry={(nodes.qJLFXXZhlqhKvcM as THREE.Mesh).geometry}
           material={materials.mEMAJQfiigHeUXV}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.thJvyyEdPZIkQGr.geometry}
+          geometry={(nodes.thJvyyEdPZIkQGr as THREE.Mesh).geometry}
           material={materials.OFvWomWIIUgmKKA}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.juMIjHdkYweLlGP.geometry}
+          geometry={(nodes.juMIjHdkYweLlGP as THREE.Mesh).geometry}
           material={materials.NzmRSNqyvNKhkmK}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.zNYAavJLMZZchIX.geometry}
+          geometry={(nodes.zNYAavJLMZZchIX as THREE.Mesh).geometry}
           material={materials.ASadxrcBIAXFnLn}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.bzbXKgxvWZbXAqu.geometry}
+          geometry={(nodes.bzbXKgxvWZbXAqu as THREE.Mesh).geometry}
           material={materials.JKvAHnqjqlqshmY}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.guzkNjLPdYYIFbm.geometry}
+          geometry={(nodes.guzkNjLPdYYIFbm as THREE.Mesh).geometry}
           material={materials.oINmXIPcNKkHSJV}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.CkZgGMshUOhytMM.geometry}
+          geometry={(nodes.CkZgGMshUOhytMM as THREE.Mesh).geometry}
           material={materials.AvocVUvikCzzMtu}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.oiLbjgjnUUhPosp.geometry}
+          geometry={(nodes.oiLbjgjnUUhPosp as THREE.Mesh).geometry}
           material={materials.AvocVUvikCzzMtu}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.nDWhlgWONddUcnN.geometry}
+          geometry={(nodes.nDWhlgWONddUcnN as THREE.Mesh).geometry}
           material={materials.tyKqaDjBmuwfmrZ}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.VAcTKRVsYcEMWxB.geometry}
+          geometry={(nodes.VAcTKRVsYcEMWxB as THREE.Mesh).geometry}
           material={materials.dkOmcmuFedorUKC}
         />
       </group>

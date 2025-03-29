@@ -1,6 +1,6 @@
 import { Text3D, Edges, RandomizedLight, AccumulativeShadows, Float } from "@react-three/drei"
-import Avatar from "../3dmodels/Avatar";
-import { usePortalTransition } from "../contexts/portalTransitionContext";
+import Avatar from "@3dmodels/Avatar";
+import { usePortalTransition } from "@contexts/portalTransitionContext";
 
 const SoftSkillsCard = ({info = [{info: '', coord: [0, 0, 0] as [number, number, number]}]}) => {
     const {currentPortal} = usePortalTransition();

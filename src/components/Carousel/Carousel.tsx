@@ -1,8 +1,8 @@
-import { CameraControls, PerspectiveCamera } from "@react-three/drei"
+import { CameraControls } from "@react-three/drei"
 import Portal from "../PortalsScene/Portal"
 import { useEffect, useState, useRef } from "react"
 import * as THREE from 'three'
-import { useFrame, useThree } from "@react-three/fiber"
+import { useThree } from "@react-three/fiber"
 import { usePortalTransition } from "../contexts/portalTransitionContext"
 
 const tech = [
@@ -52,13 +52,12 @@ const skillSet = {
     design: design,
     projects: projects
 }
-const Carousel = ({skillsName = '', skills = [{name: 'React', level: '60'}, {name: 'React', level: '80'}]}) => {
+const Carousel = () => {
   const skillSetLength = Object.keys(skillSet).length;
   const radius = 4;
-  const {currentPortal, setCurrentPortal} = usePortalTransition();
+  const {currentPortal} = usePortalTransition();
   const { scene } = useThree();
   const controlsRef = useRef<CameraControls>(null);
-  const groupRef = useRef<THREE.Group>(null);
   const [prevCameraPos, setPrevCameraPos] = useState(new THREE.Vector3(0,0,-15));
 
   useEffect(() => {            
@@ -76,7 +75,7 @@ const Carousel = ({skillsName = '', skills = [{name: 'React', level: '60'}, {nam
         controlsRef.current?.setLookAt(newCameraPosition.x, newCameraPosition.y, newCameraPosition.z, 0, 0, 0, true);
       }      
     } else controlsRef.current?.setLookAt(prevCameraPos.x, 0, prevCameraPos.z, 0, 0, 0, true);
-  }, [currentPortal]);
+  }, [currentPortal, scene, prevCameraPos]);
   
 
   return (

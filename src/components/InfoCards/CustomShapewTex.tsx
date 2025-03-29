@@ -1,7 +1,11 @@
 import * as THREE from 'three'
 
 // a componet to create a box with texture of a skill (only for those that do not have a 3d model on sketchfab)
-const CustomShapewTex = ({meshRot: [meshX, meshY, meshZ] = [0.5, 0.3, 0], materialColor='black', materialTexture, boxArgs: [x, y, z] = [0.7, 0.7, 0.1]}) => {
+const CustomShapewTex = ({
+  meshRot: [meshX, meshY, meshZ] = [0.5, 0.3, 0], 
+  materialColor='black', 
+  materialTexture = new THREE.TextureLoader().load('./img/html.png'), 
+  boxArgs: [x, y, z] = [0.7, 0.7, 0.1]}) => {
     const materials = [
             new THREE.MeshStandardMaterial({ color: materialColor }), // Front
             new THREE.MeshStandardMaterial({ color: materialColor }), // Back

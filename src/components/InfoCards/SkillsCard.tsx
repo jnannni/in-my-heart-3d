@@ -1,12 +1,9 @@
-import React from '../3dmodels/React'
-import { use, useEffect, useRef } from 'react';
-import { useControls } from 'leva';
-import * as THREE from 'three';
+import React from '@3dmodels/React'
 import './styles.css';
-import { AccumulativeShadows, RandomizedLight, PerspectiveCamera, RenderTexture, RoundedBox, Text, Text3D, useTexture, Edges } from '@react-three/drei';
+import { AccumulativeShadows, RandomizedLight, Text3D, useTexture, Edges } from '@react-three/drei';
 import Skill from './Skill';
 import CustomShapewTex from './CustomShapewTex';
-import { usePortalTransition } from '../contexts/portalTransitionContext';
+import { usePortalTransition } from '@contexts/portalTransitionContext';
 
 // lang, tech, design
 const SkillsCard = ({skills = [{name: 'React', level: '60'}, {name: 'React', level: '80'}]}) => {      
@@ -20,17 +17,6 @@ const SkillsCard = ({skills = [{name: 'React', level: '60'}, {name: 'React', lev
         transition: 'all 1s',
         opacity: currentPortal === 'tech' ? 1 : 0,        
     }
-    const annotationStyleHidden = {
-        transition: 'all 1s',
-        opacity: 0,        
-    }
-
-    const x = useControls('Annotation', {
-        scale: { value: 1, min: 0.1, max: 10, step: 0.1},
-        positionX: { value: 0, min: -10, max: 10, step: 0.1},
-        positionY: { value: 0, min: -10, max: 10, step: 0.1},
-        positionZ: { value: 0, min: -30, max: 10, step: 0.1},
-      })
 
   return (
     <>

@@ -1,31 +1,24 @@
-import { Environment, MeshReflectorMaterial, Lightformer, RoundedBox, MeshPortalMaterial, Edges} from '@react-three/drei'
-import { act, useEffect, useRef } from 'react'
+import { Environment, RoundedBox, MeshPortalMaterial, Edges} from '@react-three/drei'
+import { useRef } from 'react'
 import * as THREE from 'three'
-import { Leva, useControls } from 'leva'
 import { useFrame } from '@react-three/fiber'
-import SkillsCard from '../InfoCards/SkillsCard'
+import SkillsCard from '@infoCards/SkillsCard'
 import { easing } from 'maath'
-import AboutMeCard from '../InfoCards/AboutMeCard'
-import ProjectsCard from '../InfoCards/ProjectsCard'
-import DesignCard from '../InfoCards/DesignCard'
-import SoftSkillsCard from '../InfoCards/SoftSkillsCard'
-import { usePortalTransition } from '../contexts/portalTransitionContext'
+import AboutMeCard from '@infoCards/AboutMeCard'
+import ProjectsCard from '@infoCards/ProjectsCard'
+import DesignCard from '@infoCards/DesignCard'
+import SoftSkillsCard from '@infoCards/SoftSkillsCard'
+import { usePortalTransition } from '@contexts/portalTransitionContext'
 
-const Portal = ({skillSetName = 'techno\nlogies', skills, ...props}) => {
-    const x = useControls('Light', {
-        positionX: { value: 0, min: -50, max: 50, step: 1},
-        positionY: { value: 0, min: -50, max: 50, step: 1},
-        positionZ: { value: 0, min: -50, max: 50, step: 1},
-    })
+const Portal = ({skillSetName = 'techno\nlogies', skills = [], ...props}) => {
     const groupRef = useRef<THREE.Group>(null);
-    const ref = useRef<THREE.Mesh>(null);
     const {currentPortal, setCurrentPortal} = usePortalTransition();    
     const portalRef = useRef<THREE.ShaderMaterial>(null);
     const currentInfo = skillSetName === 'tech' ? <SkillsCard skills={skills} /> : 
-                    skillSetName === 'aboutMe' ? <AboutMeCard info={skills} portalRef={portalRef}/> : skillSetName === 'projects' ?
+                    skillSetName === 'aboutMe' ? <AboutMeCard info={skills} /> : skillSetName === 'projects' ?
                     <ProjectsCard info={skills}/> : skillSetName === 'design' ? <DesignCard info={skills} /> :
                     skillSetName === 'softSkills' ? <SoftSkillsCard info={skills} /> : null;     
-    const isDisabled = currentPortal !== '' && currentPortal === skillSetName;     
+    const isDisabled = currentPortal !== '' && currentPortal === skillSetName; 
 
     useFrame((_state, delta) => {
         if (portalRef.current) {
