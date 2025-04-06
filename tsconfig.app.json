@@ -32,8 +32,8 @@
       "@loader/*": ["./components/loader/*"],
       "@3dmodels/*": ["./components/3dmodels/*"],
       "@contexts/*": ["./components/contexts/*"],
-      "@infoCards/*": ["./components/InfoCards/*"],
-    },
+      "@infoCards/*": ["./components/InfoCards/*"]
+    }
   },
   "include": ["src"]
 }

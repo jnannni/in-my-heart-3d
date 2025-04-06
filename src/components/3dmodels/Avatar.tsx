@@ -5,18 +5,18 @@ import * as THREE from 'three';
 import { useEffect, useRef } from 'react';
 import { useAnimations, useFBX, useGLTF } from '@react-three/drei';
 
-const Avatar = ({pose = 'sittingIdle', ...props}) => {
+const Avatar = ({ pose = 'sittingIdle', ...props }) => {
   const group = useRef<THREE.Group>(null);
   const { nodes, materials } = useGLTF('./models/human.glb');
-  const {animations: sittingIdle} = useFBX('./models/sittingIdle.fbx');
+  const { animations: sittingIdle } = useFBX('./models/sittingIdle.fbx');
   sittingIdle[0].name = 'sittingIdle';
 
-  const {actions, names} = useAnimations([sittingIdle[0]], group);
+  const { actions, names } = useAnimations([sittingIdle[0]], group);
 
   useEffect(() => {
     if (actions[pose]) {
       actions[pose].reset().fadeIn(0.3).play();
-    }    
+    }
     return () => {
       if (actions[pose]) actions[pose].fadeOut(0.3);
     };
@@ -24,14 +24,18 @@ const Avatar = ({pose = 'sittingIdle', ...props}) => {
 
   return (
     <group ref={group} {...props} dispose={null} castShadow>
-      <primitive object={nodes.Hips}/>
+      <primitive object={nodes.Hips} />
       <skinnedMesh
         name="EyeLeft"
         geometry={(nodes.EyeLeft as THREE.SkinnedMesh).geometry}
         material={materials.Wolf3D_Eye}
         skeleton={(nodes.EyeLeft as THREE.SkinnedMesh).skeleton}
-        morphTargetDictionary={(nodes.EyeLeft as THREE.SkinnedMesh).morphTargetDictionary}
-        morphTargetInfluences={(nodes.EyeLeft as THREE.SkinnedMesh).morphTargetInfluences}
+        morphTargetDictionary={
+          (nodes.EyeLeft as THREE.SkinnedMesh).morphTargetDictionary
+        }
+        morphTargetInfluences={
+          (nodes.EyeLeft as THREE.SkinnedMesh).morphTargetInfluences
+        }
         castShadow
         receiveShadow
       />
@@ -40,8 +44,12 @@ const Avatar = ({pose = 'sittingIdle', ...props}) => {
         geometry={(nodes.EyeRight as THREE.SkinnedMesh).geometry}
         material={materials.Wolf3D_Eye}
         skeleton={(nodes.EyeRight as THREE.SkinnedMesh).skeleton}
-        morphTargetDictionary={(nodes.EyeRight as THREE.SkinnedMesh).morphTargetDictionary}
-        morphTargetInfluences={(nodes.EyeRight as THREE.SkinnedMesh).morphTargetInfluences}
+        morphTargetDictionary={
+          (nodes.EyeRight as THREE.SkinnedMesh).morphTargetDictionary
+        }
+        morphTargetInfluences={
+          (nodes.EyeRight as THREE.SkinnedMesh).morphTargetInfluences
+        }
         castShadow
         receiveShadow
       />
@@ -50,8 +58,12 @@ const Avatar = ({pose = 'sittingIdle', ...props}) => {
         geometry={(nodes.Wolf3D_Head as THREE.SkinnedMesh).geometry}
         material={materials.Wolf3D_Skin}
         skeleton={(nodes.Wolf3D_Head as THREE.SkinnedMesh).skeleton}
-        morphTargetDictionary={(nodes.Wolf3D_Head as THREE.SkinnedMesh).morphTargetDictionary}
-        morphTargetInfluences={(nodes.Wolf3D_Head as THREE.SkinnedMesh).morphTargetInfluences}
+        morphTargetDictionary={
+          (nodes.Wolf3D_Head as THREE.SkinnedMesh).morphTargetDictionary
+        }
+        morphTargetInfluences={
+          (nodes.Wolf3D_Head as THREE.SkinnedMesh).morphTargetInfluences
+        }
         castShadow
         receiveShadow
       />
@@ -60,8 +72,12 @@ const Avatar = ({pose = 'sittingIdle', ...props}) => {
         geometry={(nodes.Wolf3D_Teeth as THREE.SkinnedMesh).geometry}
         material={materials.Wolf3D_Teeth}
         skeleton={(nodes.Wolf3D_Teeth as THREE.SkinnedMesh).skeleton}
-        morphTargetDictionary={(nodes.Wolf3D_Teeth as THREE.SkinnedMesh).morphTargetDictionary}
-        morphTargetInfluences={(nodes.Wolf3D_Teeth as THREE.SkinnedMesh).morphTargetInfluences}
+        morphTargetDictionary={
+          (nodes.Wolf3D_Teeth as THREE.SkinnedMesh).morphTargetDictionary
+        }
+        morphTargetInfluences={
+          (nodes.Wolf3D_Teeth as THREE.SkinnedMesh).morphTargetInfluences
+        }
         castShadow
         receiveShadow
       />
@@ -101,8 +117,8 @@ const Avatar = ({pose = 'sittingIdle', ...props}) => {
         receiveShadow
       />
     </group>
-  )
-}
+  );
+};
 
-useGLTF.preload('./models/human.glb')
-export default Avatar
+useGLTF.preload('./models/human.glb');
+export default Avatar;

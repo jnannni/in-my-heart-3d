@@ -6,11 +6,11 @@ Source: https://sketchfab.com/3d-models/macbook-laptop-7ceb46a1425b475fa7f6bf192
 Title: MacBook Laptop
 */
 
-import { useGLTF, useVideoTexture } from '@react-three/drei'
-import * as THREE from 'three'
+import { useGLTF, useVideoTexture } from '@react-three/drei';
+import * as THREE from 'three';
 
-const Mac = ({vidPath = '', ...props}) => {
-  const { nodes, materials } = useGLTF('/models/mac.glb')
+const Mac = ({ vidPath = '', ...props }) => {
+  const { nodes, materials } = useGLTF('/models/mac.glb');
   const vid = useVideoTexture(vidPath);
   return (
     <group {...props} dispose={null}>
@@ -55,8 +55,9 @@ const Mac = ({vidPath = '', ...props}) => {
           castShadow
           receiveShadow
           geometry={(nodes.SadnAkehSlxIwKv as THREE.Mesh).geometry}
-          material={materials.VNZklasZKSWjWUk}>
-            <meshBasicMaterial map={vid}/>
+          material={materials.VNZklasZKSWjWUk}
+        >
+          <meshBasicMaterial map={vid} />
         </mesh>
         <mesh
           castShadow
@@ -312,8 +313,8 @@ const Mac = ({vidPath = '', ...props}) => {
         />
       </group>
     </group>
-  )
-}
+  );
+};
 
-useGLTF.preload('/models/mac.glb')
+useGLTF.preload('/models/mac.glb');
 export default Mac;

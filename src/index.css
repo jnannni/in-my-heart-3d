@@ -15,8 +15,12 @@
   /* color */
   --color-black-800: #070707;
   --color-snow-white: #f5fefd;
-  --color-light-gray: #E8EBE9;
+  --color-light-gray: #e8ebe9;
   --color-middle-gray: #575757;
+}
+
+* {
+  color: var(--color-black-800);
 }
 
 a {

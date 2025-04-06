@@ -6,29 +6,29 @@ Source: https://sketchfab.com/3d-models/low-poly-spinning-heart-17cf0dbe4435434e
 Title: Low Poly Spinning Heart!
 */
 
-import * as THREE from 'three'
-import {useRef} from 'react'
-import { useGLTF} from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
-import {useSpring, animated, easings} from '@react-spring/three'
+import * as THREE from 'three';
+import { useRef } from 'react';
+import { useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
+import { useSpring, animated, easings } from '@react-spring/three';
 
-const Heart =({...props}) => {
-  const group = useRef<THREE.Group>(null)
-  const { nodes, materials } = useGLTF('/models/crystal_heart.glb')  
+const Heart = ({ ...props }) => {
+  const group = useRef<THREE.Group>(null);
+  const { nodes, materials } = useGLTF('/models/crystal_heart.glb');
 
   const { heartScale } = useSpring({
-      from: { heartScale: 1 },
-      to: {heartScale: 1.1},      
-      config: { duration: 800 },
-      loop: {reverse: true},
-      // reset: true,
-      easing: easings.easeInOutQuad,      
-    });
-    
-  useFrame(() =>{
+    from: { heartScale: 1 },
+    to: { heartScale: 1.1 },
+    config: { duration: 800 },
+    loop: { reverse: true },
+    // reset: true,
+    easing: easings.easeInOutQuad,
+  });
+
+  useFrame(() => {
     if (group.current) {
-        group.current.rotation.y += 0.01;               
-    }   
+      group.current.rotation.y += 0.01;
+    }
   });
 
   return (
@@ -39,12 +39,19 @@ const Heart =({...props}) => {
             <group name="Crystal_Heartfbx" rotation={[Math.PI / 2, 0, 0]}>
               <group name="Object_2">
                 <group name="RootNode">
-                  <group name="Crystal_Heart" position={[0, 0.839, -0.001]} scale={0.01}>
+                  <group
+                    name="Crystal_Heart"
+                    position={[0, 0.839, -0.001]}
+                    scale={0.01}
+                  >
                     <mesh
                       name="Crystal_Heart_Crystal_Heart_Mat_0"
                       castShadow
                       receiveShadow
-                      geometry={(nodes.Crystal_Heart_Crystal_Heart_Mat_0 as THREE.Mesh).geometry}
+                      geometry={
+                        (nodes.Crystal_Heart_Crystal_Heart_Mat_0 as THREE.Mesh)
+                          .geometry
+                      }
                       material={materials.Crystal_Heart_Mat}
                     />
                   </group>
@@ -55,8 +62,8 @@ const Heart =({...props}) => {
         </group>
       </animated.group>
     </group>
-  )
-}
+  );
+};
 
-useGLTF.preload('/models/crystal_heart.glb')
+useGLTF.preload('/models/crystal_heart.glb');
 export default Heart;

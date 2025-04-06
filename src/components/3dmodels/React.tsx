@@ -6,13 +6,13 @@ Source: https://sketchfab.com/3d-models/react-logo-76174ceeba96487f9863f974636f6
 Title: React logo
 */
 
-import { useGLTF, Edges } from '@react-three/drei'
+import { useGLTF, Edges } from '@react-three/drei';
 import { useRef } from 'react';
 import * as THREE from 'three';
 
-const React = ({...props}) => {
-    const ref = useRef<THREE.Group>(null);
-  const { nodes, materials } = useGLTF('/models/react.glb')
+const React = ({ ...props }) => {
+  const ref = useRef<THREE.Group>(null);
+  const { nodes, materials } = useGLTF('/models/react.glb');
   return (
     <group ref={ref} {...props} dispose={null}>
       <group scale={0.01}>
@@ -22,13 +22,14 @@ const React = ({...props}) => {
           material={materials['Material.002']}
           position={[0, 7.935, 18.102]}
           rotation={[0, 0, -Math.PI / 2]}
-          scale={[39.166, 39.166, 52.734]}>
-            <Edges linewidth={1} threshold={15} color={"black"} />                     
+          scale={[39.166, 39.166, 52.734]}
+        >
+          <Edges linewidth={1} threshold={15} color={'black'} />
         </mesh>
       </group>
     </group>
-  )
-}
+  );
+};
 
 useGLTF.preload('/models/react.glb');
 export default React;

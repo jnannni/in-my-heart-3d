@@ -5,18 +5,18 @@ License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 Source: https://sketchfab.com/3d-models/ipad-air4-d8032df3d8c0455394ea527ef4ddaef5
 Title: Ipad Air4
 */
-import { useGLTF, useVideoTexture } from '@react-three/drei'
-import * as THREE from 'three'
+import { useGLTF, useVideoTexture } from '@react-three/drei';
+import * as THREE from 'three';
 
-const Ipad = ({...props}) => {
-  const { nodes, materials } = useGLTF('/models/ipad.glb')
-  const vid = useVideoTexture('/img/ipad.mp4')
+const Ipad = ({ ...props }) => {
+  const { nodes, materials } = useGLTF('/models/ipad.glb');
+  const vid = useVideoTexture('/img/ipad.mp4');
   vid.flipY = false;
   vid.rotation = -Math.PI / 2;
   vid.center.set(0.5, 0.5);
   vid.repeat.set(4, 4);
   vid.offset.set(-0.5, -1);
-  
+
   return (
     <group {...props} dispose={null}>
       <group scale={[0.159, 0.096, 0.159]}>
@@ -30,9 +30,10 @@ const Ipad = ({...props}) => {
           castShadow
           receiveShadow
           geometry={(nodes.Object_5 as THREE.Mesh).geometry}
-          material={materials['.001']}>
-            <meshBasicMaterial map={vid}/>
-            </mesh>
+          material={materials['.001']}
+        >
+          <meshBasicMaterial map={vid} />
+        </mesh>
         <mesh
           castShadow
           receiveShadow
@@ -43,7 +44,8 @@ const Ipad = ({...props}) => {
           castShadow
           receiveShadow
           geometry={(nodes.Object_7 as THREE.Mesh).geometry}
-          material={materials.Material}/>
+          material={materials.Material}
+        />
         <mesh
           castShadow
           receiveShadow
@@ -54,7 +56,8 @@ const Ipad = ({...props}) => {
           castShadow
           receiveShadow
           geometry={(nodes.Object_9 as THREE.Mesh).geometry}
-          material={materials.glass}/>
+          material={materials.glass}
+        />
         <mesh
           castShadow
           receiveShadow
@@ -115,8 +118,8 @@ const Ipad = ({...props}) => {
         </group>
       </group>
     </group>
-  )
-}
+  );
+};
 
-useGLTF.preload('/models/ipad.glb')
+useGLTF.preload('/models/ipad.glb');
 export default Ipad;
