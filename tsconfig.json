@@ -5,7 +5,17 @@
     { "path": "./tsconfig.node.json" }
   ],
   "include": ["src"],
+  "noEmit": true,
   "compilerOptions": {
-    "jsx": "react-jsx" // or "react" if you're using an older version of React
+    "baseUrl": "./src",
+    "jsx": "react-jsx",
+    "paths": {
+      "@components/*": ["./components/*"],
+      "@assets/*": ["./assets/*"],
+      "@loader/*": ["./components/loader/*"],
+      "@3dmodels/*": ["./components/3dmodels/*"],
+      "@contexts/*": ["./components/contexts/*"],
+      "@infoCards/*": ["./components/InfoCards/*"]
+    }
   }
 }

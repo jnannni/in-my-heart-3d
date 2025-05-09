@@ -1,8 +1,8 @@
 import { CameraControls } from '@react-three/drei';
 import Portal from '../PortalsScene/Portal';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { useFrame, useThree } from '@react-three/fiber';
+import { useThree } from '@react-three/fiber';
 import { usePortalTransition } from '@contexts/portalTransitionContext';
 
 const tech = [
